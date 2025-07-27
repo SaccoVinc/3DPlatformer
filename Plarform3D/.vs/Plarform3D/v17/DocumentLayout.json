@@ -1,0 +1,235 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Developement\\Unity\\Plarform3D\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|C:\\Developement\\Unity\\Plarform3D\\assets\\scripts\\playermovementstatemachine\\playerwallslidingstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playermovementstatemachine\\playerwallslidingstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|c:\\developement\\unity\\plarform3d\\assets\\scripts\\playermovementstatemachine\\playerstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playermovementstatemachine\\playerstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|C:\\Developement\\Unity\\Plarform3D\\assets\\scripts\\playeractionstatemachine\\animationeventreceiver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playeractionstatemachine\\animationeventreceiver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|c:\\developement\\unity\\plarform3d\\assets\\scripts\\utils\\particlemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\utils\\particlemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|c:\\developement\\unity\\plarform3d\\assets\\scripts\\utils\\cameramanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\utils\\cameramanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|c:\\developement\\unity\\plarform3d\\assets\\scripts\\utils\\cameraregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\utils\\cameraregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|C:\\Developement\\Unity\\Plarform3D\\assets\\scripts\\utils\\triggerzone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\utils\\triggerzone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|C:\\Developement\\Unity\\Plarform3D\\assets\\scripts\\playermovementstatemachine\\playerjumpstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playermovementstatemachine\\playerjumpstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|C:\\Developement\\Unity\\Plarform3D\\assets\\scripts\\playeractionstatemachine\\playerattackactionstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playeractionstatemachine\\playerattackactionstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|C:\\Developement\\Unity\\Plarform3D\\assets\\scripts\\playermovementstatemachine\\playergroundedstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playermovementstatemachine\\playergroundedstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|C:\\Developement\\Unity\\Plarform3D\\assets\\scripts\\playermovementstatemachine\\playerbasestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playermovementstatemachine\\playerbasestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|C:\\Developement\\Unity\\Plarform3D\\assets\\scripts\\playermovementstatemachine\\playerfallstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409EE7EC-4620-0D86-D5D7-A34AC32C6D01}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playermovementstatemachine\\playerfallstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Developement\\Unity\\Plarform3D\\assets\\scripts\\particlemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\scripts\\particlemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ParticleManager.cs",
+              "DocumentMoniker": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\Utils\\ParticleManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Utils\\ParticleManager.cs",
+              "ToolTip": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\Utils\\ParticleManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Utils\\ParticleManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T13:56:33.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CameraManager.cs",
+              "DocumentMoniker": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\Utils\\CameraManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Utils\\CameraManager.cs",
+              "ToolTip": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\Utils\\CameraManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Utils\\CameraManager.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAIAwwDIAAABeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T13:07:43.59Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CameraRegister.cs",
+              "DocumentMoniker": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\Utils\\CameraRegister.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Utils\\CameraRegister.cs",
+              "ToolTip": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\Utils\\CameraRegister.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Utils\\CameraRegister.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAowDcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T13:07:29.081Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TriggerZone.cs",
+              "DocumentMoniker": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\Utils\\TriggerZone.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Utils\\TriggerZone.cs",
+              "ToolTip": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\Utils\\TriggerZone.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Utils\\TriggerZone.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T13:02:47.826Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AnimationEventReceiver.cs",
+              "DocumentMoniker": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\PlayerActionStateMachine\\AnimationEventReceiver.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerActionStateMachine\\AnimationEventReceiver.cs",
+              "ToolTip": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\PlayerActionStateMachine\\AnimationEventReceiver.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerActionStateMachine\\AnimationEventReceiver.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAMwCcAAACAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T10:38:50.207Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PlayerJumpState.cs",
+              "DocumentMoniker": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\PlayerMovementStateMachine\\PlayerJumpState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovementStateMachine\\PlayerJumpState.cs",
+              "ToolTip": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\PlayerMovementStateMachine\\PlayerJumpState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerMovementStateMachine\\PlayerJumpState.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAkwCsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T21:11:36.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PlayerAttackActionState.cs",
+              "DocumentMoniker": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\PlayerActionStateMachine\\PlayerAttackActionState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerActionStateMachine\\PlayerAttackActionState.cs",
+              "ToolTip": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\PlayerActionStateMachine\\PlayerAttackActionState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerActionStateMachine\\PlayerAttackActionState.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAQwDkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T18:48:58.668Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayerWallSlidingState.cs",
+              "DocumentMoniker": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\PlayerMovementStateMachine\\PlayerWallSlidingState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovementStateMachine\\PlayerWallSlidingState.cs",
+              "ToolTip": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\PlayerMovementStateMachine\\PlayerWallSlidingState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerMovementStateMachine\\PlayerWallSlidingState.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAD4vyUAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T09:08:13.984Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PlayerFallState.cs",
+              "DocumentMoniker": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\PlayerMovementStateMachine\\PlayerFallState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovementStateMachine\\PlayerFallState.cs",
+              "ToolTip": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\PlayerMovementStateMachine\\PlayerFallState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerMovementStateMachine\\PlayerFallState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T09:14:37.673Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlayerStateMachine.cs",
+              "DocumentMoniker": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\PlayerMovementStateMachine\\PlayerStateMachine.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovementStateMachine\\PlayerStateMachine.cs",
+              "ToolTip": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\PlayerMovementStateMachine\\PlayerStateMachine.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerMovementStateMachine\\PlayerStateMachine.cs",
+              "ViewState": "AgIAAFcBAAAAAAAAAAD4v2cBAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T01:18:56.893Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PlayerGroundedState.cs",
+              "DocumentMoniker": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\PlayerMovementStateMachine\\PlayerGroundedState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovementStateMachine\\PlayerGroundedState.cs",
+              "ToolTip": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\PlayerMovementStateMachine\\PlayerGroundedState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerMovementStateMachine\\PlayerGroundedState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T16:44:49.765Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ParticleManager.cs",
+              "DocumentMoniker": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\ParticleManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ParticleManager.cs",
+              "ToolTip": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\ParticleManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ParticleManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T17:05:26.93Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PlayerBaseState.cs",
+              "DocumentMoniker": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\PlayerMovementStateMachine\\PlayerBaseState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovementStateMachine\\PlayerBaseState.cs",
+              "ToolTip": "C:\\Developement\\Unity\\Plarform3D\\Assets\\Scripts\\PlayerMovementStateMachine\\PlayerBaseState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerMovementStateMachine\\PlayerBaseState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T01:38:44.648Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
