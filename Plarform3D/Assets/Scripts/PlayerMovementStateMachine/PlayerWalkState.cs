@@ -4,7 +4,6 @@ using UnityEngine;
 public class PlayerWalkState : PlayerBaseState
 {
 
-
     public PlayerWalkState(PlayerStateMachine currentContext, PlayerStateFactory playerStateFactory)
     : base(currentContext, playerStateFactory) { }
 
@@ -14,7 +13,7 @@ public class PlayerWalkState : PlayerBaseState
         {
             SwitchState(_factory.Idle());
         }
-        else if (_ctx.IsSprintPressed && _ctx.IsMovementPressed)
+        else if (_ctx.IsSprintPressed && _ctx.IsMovementPressed && !_ctx.IsGrabbingStarted)
         {
             SwitchState(_factory.Run());
         }

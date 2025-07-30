@@ -42,7 +42,9 @@ public class PlayerWallSlidingState : PlayerBaseState, IRootState
         _ctx.CheckForSlopeDirection = (Vector3.down + 0.2f * forwardPlanevector) * 5;
         _ctx.CurrentMovementY = 0f;
 
-        
+        SoundManager.PlaySound3D(SoundType.Slide, _ctx.transform.position, 1);
+
+
     }
 
     public override void ExitState()

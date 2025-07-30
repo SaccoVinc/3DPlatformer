@@ -13,7 +13,7 @@ public class PlayerRunState : PlayerBaseState
         {
             SwitchState(_factory.Idle());
         }
-        else if (!_ctx.IsSprintPressed && _ctx.IsMovementPressed)
+        else if ((!_ctx.IsSprintPressed && _ctx.IsMovementPressed) || _ctx.IsGrabbingStarted)
         {
             SwitchState(_factory.Walk());
         }

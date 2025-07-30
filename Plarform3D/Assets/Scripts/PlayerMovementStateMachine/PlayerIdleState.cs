@@ -8,7 +8,7 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void CheckSwitchStates()
     {
-        if (_ctx.IsMovementPressed && _ctx.IsSprintPressed)
+        if (_ctx.IsMovementPressed && _ctx.IsSprintPressed && !_ctx.IsGrabbingStarted)
         {
             SwitchState(_factory.Run());
         }

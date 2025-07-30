@@ -13,6 +13,7 @@ public class PlayerFallState : PlayerBaseState, IRootState
         if (_ctx.CharacterController.isGrounded)
         {
             SwitchState(_factory.Grounded());
+            SoundManager.PlaySound3D(SoundType.Step, _ctx.transform.position, 1);
         }
         else if (_ctx.CanJump)
         {

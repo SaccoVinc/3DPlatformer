@@ -6,17 +6,22 @@ public class PlayerActionStateMachine : MonoBehaviour
 {
     PlayerInput playerInput;
     Animator animator;
-    CharacterController characterController; // Aggiungi questo
+    CharacterController characterController;
 
     PlayerStateMachine _playerStateMachine;
     PlayerActionBaseState _currentState;
     PlayerActionStateFactory _states;
 
+    // Hash per le animazioni
     int _leftPunchHash;
     int _rightPunchHash;
-    bool _isAttackPressed = false;
-    bool _requireNewAttackPress = false;
+    int _grabHash;
 
+    // Stati input
+    bool _isAttackPressed = false;
+    bool _isGrabPressed = false;
+    bool _isInGrabState = false; // Nuovo input per il grab
+    bool _requireNewAttackPress = false;
     bool _hasBufferedInput = false;
 
     [Header("Attack Settings")]
@@ -27,22 +32,32 @@ public class PlayerActionStateMachine : MonoBehaviour
     [SerializeField] float _layerWeightTransitionSpeed = 5f;
 
     [Header("Dash Settings")]
-    [SerializeField] float _dashForce = 5f; // Forza del dash
-    [SerializeField] float _dashDuration = 0.1f; // Durata del dash
+    [SerializeField] float _dashForce = 5f;
+    [SerializeField] float _dashDuration = 0.1f;
+
+    [Header("Debug Settings")]
+    [SerializeField] bool _showDebugGUI = true;
 
     private Coroutine _layerWeightCoroutine;
     private Coroutine _dashCoroutine;
 
     // Properties pubbliche
-    public PlayerActionBaseState CurrentState { get => _currentState; set => _currentState = value; }
+    public PlayerActionBaseState CurrentState
+    {
+        get => _currentState;
+        set { _currentState = value; }
+    }
     public PlayerStateMachine PlayerStateMachine { get => _playerStateMachine; set => _playerStateMachine = value; }
     public bool IsAttackPressed => _isAttackPressed;
+    public bool IsGrabPressed => _isGrabPressed;
+    public bool IsInGrabState => _isInGrabState; // Nuova property
     public bool RequireNewAttackPress { get => _requireNewAttackPress; set => _requireNewAttackPress = value; }
     public bool HasBufferedInput { get => _hasBufferedInput; set => _hasBufferedInput = value; }
     public int RightPunchHash => _rightPunchHash;
     public int LeftPunchHash => _leftPunchHash;
+    public int GrabHash => _grabHash;
     public Animator Animator => animator;
-    public CharacterController CharacterController => characterController; // Aggiungi questa property
+    public CharacterController CharacterController => characterController;
     public float AttacksDuration { get => _attacksDuration; set => _attacksDuration = value; }
 
     void Awake()
@@ -59,6 +74,7 @@ public class PlayerActionStateMachine : MonoBehaviour
 
         _rightPunchHash = Animator.StringToHash("rightPunch");
         _leftPunchHash = Animator.StringToHash("leftPunch");
+        _grabHash = Animator.StringToHash("isGrabbing");
 
         _states = new PlayerActionStateFactory(this);
         _currentState = _states.Idle();
@@ -66,15 +82,25 @@ public class PlayerActionStateMachine : MonoBehaviour
 
         playerInput.CharachterControls.Attack.performed += OnAttack;
         playerInput.CharachterControls.Attack.canceled += OnAttack;
-    }
 
+        playerInput.CharachterControls.Grab.performed += OnGrab;
+        playerInput.CharachterControls.Grab.canceled += OnGrab;
+    }
     void Update()
     {
         _currentState.UpdateStates();
 
+        _isInGrabState = _currentState is PlayerGrabActionState;
+
         if (!_isAttackPressed && _requireNewAttackPress)
         {
             _requireNewAttackPress = false;
+        }
+
+        // Debug line - rimuovi quando funziona tutto
+        if (_showDebugGUI && _isInGrabState)
+        {
+            Debug.Log($"In Grab State - IsGrabPressed: {_isGrabPressed}");
         }
     }
 
@@ -87,6 +113,8 @@ public class PlayerActionStateMachine : MonoBehaviour
         }
     }
 
+
+
     void OnAttack(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -98,6 +126,22 @@ public class PlayerActionStateMachine : MonoBehaviour
             _isAttackPressed = false;
         }
     }
+
+    void OnGrab(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            _isGrabPressed = true;
+            Debug.Log("GRAB PRESSED - Entering grab state");
+        }
+        else if (context.canceled)
+        {
+            _isGrabPressed = false;
+            Debug.Log("GRAB RELEASED - Should exit grab state");
+        }
+    }
+
+    
 
     public void OnPunchDashStart()
     {
@@ -198,5 +242,4 @@ public class PlayerActionStateMachine : MonoBehaviour
             StopCoroutine(_dashCoroutine);
         }
     }
-
 }

@@ -22,7 +22,7 @@ public class PlayerGroundedState : PlayerBaseState, IRootState
 
     public override void CheckSwitchStates()
     {
-        if (_ctx.CanJump)
+        if (_ctx.CanJump && !_ctx.IsGrabbingStarted)
         {
             _ctx.ConsumeJumpBuffer();
             SwitchState(_factory.Jump());

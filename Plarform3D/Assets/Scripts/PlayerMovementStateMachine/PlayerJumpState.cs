@@ -41,6 +41,7 @@ public class PlayerJumpState : PlayerBaseState, IRootState
         if (_ctx.CharacterController.isGrounded && !_ctx.ShouldSlide)
         {
             _ctx.Invoke("SpawnLandingParticles", 0.05f);
+            SoundManager.PlaySound3D(SoundType.Step, _ctx.transform.position, 1);
         }
     }
 

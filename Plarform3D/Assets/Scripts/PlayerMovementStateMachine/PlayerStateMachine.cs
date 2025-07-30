@@ -28,6 +28,7 @@ public class PlayerStateMachine : MonoBehaviour
     float jumpBufferTimer = 0f;
     float coyoteTimer = 0f;
     bool wasGroundedLastFrame = false;
+    bool isGrabbingStarted = false;
 
     int isSprintingHash;
     int isWalkingHash;
@@ -58,8 +59,8 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] float maxJumpTime = 0.5f;
 
     [Header("Jump Timing")]
-    [SerializeField] float jumpBufferTime = 0.2f; 
-    [SerializeField] float coyoteTime = 0.1f;   
+    [SerializeField] float jumpBufferTime = 0.2f;
+    [SerializeField] float coyoteTime = 0.1f;
 
     [Header("Particles")]
     [SerializeField] GameObject _dustParticles;
@@ -75,6 +76,7 @@ public class PlayerStateMachine : MonoBehaviour
     public Animator Animator { get { return animator; } }
     public bool RequireNewJumpPress { get { return requireNewJumpPress; } set { requireNewJumpPress = value; } }
     public bool IsJumping { get { return isJumping; } set { isJumping = value; } }
+    public bool IsGrabbingStarted { get { return isGrabbingStarted; } set { isGrabbingStarted = value; } }
     public int IsJumpingHash { get { return isJumpingHash; } }
     public int JumpCountHash { get { return jumpCountHash; } }
     public int IsSprintingHash { get { return isSprintingHash; } }
@@ -99,7 +101,7 @@ public class PlayerStateMachine : MonoBehaviour
     public Dictionary<int, float> JumpGravities { get { return jumpGravities; } }
     public CharacterController CharacterController { get { return characterController; } }
     public bool IsMovementPressed { get { return isMovementPressed; } set { isMovementPressed = value; } }
-    public bool ShouldSlide { get { return shouldSlide; }}
+    public bool ShouldSlide { get { return shouldSlide; } }
     public bool IsSprintPressed { get { return isSprintPressed; } set { isSprintPressed = value; } }
     public float RunSpeedMultiplier { get { return runSpeedMultiplyer; } }
     public float BaseSpeedMultiplier { get { return baseSpeedMultiplyer; } }
@@ -109,13 +111,17 @@ public class PlayerStateMachine : MonoBehaviour
     public GameObject DustParticlesSpawnLocation { get { return _dustParticlesSpawnLocation; } set { _dustParticlesSpawnLocation = value; } }
 
     public bool isMovementRelativeToCamera { get; set; } = true;
+
+    // Nuova proprietà per controllare se il player può ruotare
+    public bool canRotate { get; set; } = true;
+
     public string CurrentMovementState
     {
         get
         {
             if (_currentState is PlayerGroundedState groundedState)
             {
-                return "grounded"; 
+                return "grounded";
             }
             else if (_currentState is PlayerJumpState)
             {
@@ -129,6 +135,7 @@ public class PlayerStateMachine : MonoBehaviour
             return "unknown";
         }
     }
+
     public void ConsumeJumpBuffer()
     {
         jumpBufferTimer = 0f;
@@ -220,11 +227,15 @@ public class PlayerStateMachine : MonoBehaviour
 
     void HandleRotation()
     {
-        if (!isMovementPressed) return;
+        var actionStateMachine = GetComponent<PlayerActionStateMachine>();
+
+        if (!isMovementPressed || !canRotate || isGrabbingStarted)
+        {
+            return;
+        }
 
         Vector3 positionToLookAt = new Vector3(finalMovement.x, 0, finalMovement.z);
 
-        // Verifica che il vettore non sia zero o quasi zero
         if (positionToLookAt.sqrMagnitude < 0.01f) return;
 
         Quaternion currentRotation = transform.rotation;
@@ -252,7 +263,6 @@ public class PlayerStateMachine : MonoBehaviour
         characterController.Move(finalMovement * Time.deltaTime);
     }
 
-    //PlayerCallBacks Input
     void OnMovement(InputAction.CallbackContext context)
     {
         currentMovementInput = context.ReadValue<Vector2>();
@@ -316,38 +326,31 @@ public class PlayerStateMachine : MonoBehaviour
 
         shouldSlide = false;
 
-        if (Physics.Raycast(transform.position + Vector3.up, checkForSlopeDirection, out RaycastHit hitInfo, 5, ~0)) {
+        if (Physics.Raycast(transform.position + Vector3.up, checkForSlopeDirection, out RaycastHit hitInfo, 5, ~0))
+        {
             float angle = Vector3.Angle(hitInfo.normal, Vector3.up);
 
-            if(angle > characterController.slopeLimit)
+            if (angle > characterController.slopeLimit)
             {
                 shouldSlide = true;
                 slopeNormal = hitInfo.normal;
                 return;
             }
-        
-        }
-    }
 
-    void OnGUI()
-    {
-        GUI.Label(new Rect(10, 10, 300, 20), "Should Slide: " + shouldSlide);
-        GUI.Label(new Rect(10, 30, 300, 20), "Current State: " + _currentState);
-        GUI.Label(new Rect(10, 50, 300, 20), "Current Sub State: " + _currentState._currentSubState);
+        }
     }
 
     public void ForceInputRefresh()
     {
-        // Leggi direttamente dai controlli per assicurarti che siano aggiornati
         Vector2 currentInput = playerInput.CharachterControls.Move.ReadValue<Vector2>();
         bool currentMovementPressed = (currentInput.x != 0 || currentInput.y != 0);
         bool currentSprintPressed = playerInput.CharachterControls.Sprint.ReadValue<float>() > 0.5f;
 
-        // Aggiorna gli stati
+        
         isMovementPressed = currentMovementPressed;
         isSprintPressed = currentSprintPressed;
 
-        // Aggiorna anche i valori di movimento
+       
         currentMovementInput = currentInput;
         currentMovement.x = currentInput.x;
         currentMovement.z = currentInput.y;
@@ -358,5 +361,12 @@ public class PlayerStateMachine : MonoBehaviour
     public void SpawnLandingParticles()
     {
         ParticleManager.Instance.SpawnParticle(_landingParticles, _dustParticlesSpawnLocation.transform.position, Quaternion.identity);
+    }
+
+    private void OnGUI()
+    {
+        GUI.Label(new Rect(10, 10, 300, 20), "IsGrabbingStarted " + isGrabbingStarted);
+        GUI.Label(new Rect(10, 30, 300, 20), "Can rotate: " + canRotate);
+        GUI.Label(new Rect(10, 50, 300, 20), "Current Sub State: " + _currentState._currentSubState);
     }
 }

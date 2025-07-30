@@ -10,7 +10,12 @@ public class PlayerIdleActionState : PlayerActionBaseState
 
     public override void CheckSwitchStates()
     {
-        // Controlla se c'è input di attacco e non è richiesta una nuova pressione
+        if (_ctx.IsGrabPressed)
+        {
+            SwitchState(_factory.Grab());
+            return;
+        }
+
         if (_ctx.IsAttackPressed && !_ctx.RequireNewAttackPress)
         {
             SwitchState(_factory.Attack());
@@ -19,7 +24,6 @@ public class PlayerIdleActionState : PlayerActionBaseState
 
     public override void EnterState()
     {
-        // Assicurati che la weight sia a 0 con lerp smooth
         _ctx.SetLayerWeightSmooth(1, 0f);
     }
 

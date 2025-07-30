@@ -6,7 +6,8 @@ public enum PlayerActionStateType
     Idle,
     Attack,
     PunchLeft,
-    PunchRight
+    PunchRight,
+    Grab
 }
 
 public class PlayerActionStateFactory
@@ -28,6 +29,7 @@ public class PlayerActionStateFactory
         _stateCache = new Dictionary<PlayerActionStateType, PlayerActionBaseState>
         {
             { PlayerActionStateType.Idle, new PlayerIdleActionState(_context, this) },
+            { PlayerActionStateType.Grab, new PlayerGrabActionState(_context, this) },
             { PlayerActionStateType.Attack, new PlayerAttackActionState(_context, this) },
             { PlayerActionStateType.PunchLeft, new PlayerPunchLeftState(_context, this) },
             { PlayerActionStateType.PunchRight, new PlayerPunchRightState(_context, this) },
@@ -45,6 +47,7 @@ public class PlayerActionStateFactory
     }
 
     public PlayerActionBaseState Idle() => GetState(PlayerActionStateType.Idle);
+    public PlayerActionBaseState Grab() => GetState(PlayerActionStateType.Grab);
     public PlayerActionBaseState PunchLeft() => GetState(PlayerActionStateType.PunchLeft);
     public PlayerActionBaseState PunchRight() => GetState(PlayerActionStateType.PunchRight);
     public PlayerActionBaseState Attack() => GetState(PlayerActionStateType.Attack);
