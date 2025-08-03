@@ -38,6 +38,9 @@ public class PlayerActionStateMachine : MonoBehaviour
     [Header("Debug Settings")]
     [SerializeField] bool _showDebugGUI = true;
 
+    [Header("Shooting Settings")]
+    [SerializeField] int _shootingLayerId = 4;
+ 
     private Coroutine _layerWeightCoroutine;
     private Coroutine _dashCoroutine;
 
@@ -55,8 +58,11 @@ public class PlayerActionStateMachine : MonoBehaviour
     public bool HasBufferedInput { get => _hasBufferedInput; set => _hasBufferedInput = value; }
     public int RightPunchHash => _rightPunchHash;
     public int LeftPunchHash => _leftPunchHash;
+    public int ShootingLayerId => _shootingLayerId;
     public int GrabHash => _grabHash;
     public Animator Animator => animator;
+    
+    public PlayerActionStateFactory States => _states;
     public CharacterController CharacterController => characterController;
     public float AttacksDuration { get => _attacksDuration; set => _attacksDuration = value; }
 
@@ -132,12 +138,10 @@ public class PlayerActionStateMachine : MonoBehaviour
         if (context.performed)
         {
             _isGrabPressed = true;
-            Debug.Log("GRAB PRESSED - Entering grab state");
         }
         else if (context.canceled)
         {
             _isGrabPressed = false;
-            Debug.Log("GRAB RELEASED - Should exit grab state");
         }
     }
 

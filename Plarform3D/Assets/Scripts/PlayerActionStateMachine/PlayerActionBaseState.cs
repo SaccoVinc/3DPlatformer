@@ -43,17 +43,16 @@ public abstract class PlayerActionBaseState
 
     public void SetSubState(PlayerActionBaseState newSubState)
     {
-        // Esci dal sub-state corrente se esiste
+       
         if (_currentSubState != null)
         {
             _currentSubState.ExitStates();
         }
 
-        // Imposta il nuovo sub-state
         _currentSubState = newSubState;
         newSubState.SetSuperState(this);
 
-        // Entra nel nuovo sub-state
+       
         newSubState.EnterState();
     }
 

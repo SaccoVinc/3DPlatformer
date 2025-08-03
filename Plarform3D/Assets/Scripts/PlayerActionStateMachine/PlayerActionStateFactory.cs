@@ -7,7 +7,8 @@ public enum PlayerActionStateType
     Attack,
     PunchLeft,
     PunchRight,
-    Grab
+    Grab,
+    PaintGun
 }
 
 public class PlayerActionStateFactory
@@ -33,6 +34,7 @@ public class PlayerActionStateFactory
             { PlayerActionStateType.Attack, new PlayerAttackActionState(_context, this) },
             { PlayerActionStateType.PunchLeft, new PlayerPunchLeftState(_context, this) },
             { PlayerActionStateType.PunchRight, new PlayerPunchRightState(_context, this) },
+            { PlayerActionStateType.PaintGun, new PlayerPaintGunActionState(_context, this) },
         };
     }
 
@@ -51,4 +53,5 @@ public class PlayerActionStateFactory
     public PlayerActionBaseState PunchLeft() => GetState(PlayerActionStateType.PunchLeft);
     public PlayerActionBaseState PunchRight() => GetState(PlayerActionStateType.PunchRight);
     public PlayerActionBaseState Attack() => GetState(PlayerActionStateType.Attack);
+    public PlayerActionBaseState PaintGun() => GetState(PlayerActionStateType.PaintGun);
 }
