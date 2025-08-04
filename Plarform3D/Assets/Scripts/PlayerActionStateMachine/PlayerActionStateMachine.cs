@@ -20,7 +20,7 @@ public class PlayerActionStateMachine : MonoBehaviour
     // Stati input
     bool _isAttackPressed = false;
     bool _isGrabPressed = false;
-    bool _isInGrabState = false; // Nuovo input per il grab
+    bool _isInGrabState = false;
     bool _requireNewAttackPress = false;
     bool _hasBufferedInput = false;
 
@@ -101,12 +101,6 @@ public class PlayerActionStateMachine : MonoBehaviour
         if (!_isAttackPressed && _requireNewAttackPress)
         {
             _requireNewAttackPress = false;
-        }
-
-        // Debug line - rimuovi quando funziona tutto
-        if (_showDebugGUI && _isInGrabState)
-        {
-            Debug.Log($"In Grab State - IsGrabPressed: {_isGrabPressed}");
         }
     }
 

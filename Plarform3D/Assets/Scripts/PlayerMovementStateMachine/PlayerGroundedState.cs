@@ -32,6 +32,11 @@ public class PlayerGroundedState : PlayerBaseState, IRootState
         {
             SwitchState(_factory.WallSliding());
         }
+
+        if (!_ctx.CharacterController.isGrounded)
+        {
+            SwitchState(_factory.Fall());
+        }
     }
 
     public void HandleGravity()

@@ -53,6 +53,7 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] float rotationSpeed = 3f;
     [SerializeField] float baseSpeedMultiplyer = 5f;
     [SerializeField] float runSpeedMultiplyer = 10f;
+    [SerializeField] float fallingSpeed = -9.81f;
 
     [Header("Jump")]
     [SerializeField] float maxJumpHeight = 1f;
@@ -91,6 +92,7 @@ public class PlayerStateMachine : MonoBehaviour
     public float AppliedMovementX { get { return appliedMovement.x; } set { appliedMovement.x = value; } }
     public float AppliedMovementY { get { return appliedMovement.y; } set { appliedMovement.y = value; } }
     public float AppliedMovementZ { get { return appliedMovement.z; } set { appliedMovement.z = value; } }
+    public float FallingSpeed { get { return fallingSpeed; } set { fallingSpeed = value; } }
     public Vector3 CurrentMovement { get { return currentMovement; } set { currentMovement = value; } }
     public Vector3 CheckForSlopeDirection { get { return checkForSlopeDirection; } set { checkForSlopeDirection = value; } }
     public Vector3 AppliedMovement { get { return appliedMovement; } set { appliedMovement = value; } }

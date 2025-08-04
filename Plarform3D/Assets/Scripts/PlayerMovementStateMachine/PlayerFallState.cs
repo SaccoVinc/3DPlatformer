@@ -40,7 +40,7 @@ public class PlayerFallState : PlayerBaseState, IRootState
     public void HandleGravity()
     {
         float previousYVelocity = _ctx.CurrentMovementY;
-        _ctx.CurrentMovementY = _ctx.CurrentMovementY + (_ctx.Gravity * Time.deltaTime);
+        _ctx.CurrentMovementY = _ctx.CurrentMovementY + (_ctx.FallingSpeed * Time.deltaTime);
         _ctx.AppliedMovementY = Mathf.Max((previousYVelocity + _ctx.CurrentMovementY) * 0.5f, -20.0f);
     }
 
