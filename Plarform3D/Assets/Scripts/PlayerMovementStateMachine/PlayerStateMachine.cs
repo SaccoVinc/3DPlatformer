@@ -7,16 +7,18 @@ public class PlayerStateMachine : MonoBehaviour
 {
     PlayerInput playerInput;
     CharacterController characterController;
+    PlayerActionStateMachine playerActionStateMachine;
     Animator animator;
 
     Vector2 currentMovementInput;
     Vector3 currentMovement;
     Vector3 appliedMovement;
     Vector3 finalMovement;
-    Vector3 convertedToCameraMovement;
     Vector3 slopeNormal;
     Vector3 slopeSlideVelocity;
     Vector3 checkForSlopeDirection;
+    Vector3 ledgeGrabPoint;
+    Vector3 ledgeGrabDirection;
 
     bool isMovementPressed = false;
     bool isSprintPressed = false;
@@ -24,6 +26,9 @@ public class PlayerStateMachine : MonoBehaviour
     bool isJumping = false;
     bool requireNewJumpPress = false;
     bool shouldSlide = false;
+    bool shouldLedgeGrab = false;
+    bool blockMovement = false;
+    bool rotateTowardsCameraForward = false;
 
     float jumpBufferTimer = 0f;
     float coyoteTimer = 0f;
@@ -33,6 +38,7 @@ public class PlayerStateMachine : MonoBehaviour
     int isSprintingHash;
     int isWalkingHash;
     int isJumpingHash;
+    int isLedgeGrabbingHash;
     int isFallingHash;
     int isWallSlidingHash;
     int jumpCountHash;
@@ -69,6 +75,8 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] GameObject _dustParticlesSpawnLocation;
 
     //Getters and Setters
+
+    public PlayerActionStateMachine PlayerActionStateMachine { get { return playerActionStateMachine; } set { playerActionStateMachine = value; } }
     public PlayerBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
     public bool IsJumpPressed { get { return isJumpPressed; } }
     public bool CanJump { get { return (jumpBufferTimer > 0f) && (characterController.isGrounded || coyoteTimer > 0f) && !requireNewJumpPress; } }
@@ -78,9 +86,11 @@ public class PlayerStateMachine : MonoBehaviour
     public bool RequireNewJumpPress { get { return requireNewJumpPress; } set { requireNewJumpPress = value; } }
     public bool IsJumping { get { return isJumping; } set { isJumping = value; } }
     public bool IsGrabbingStarted { get { return isGrabbingStarted; } set { isGrabbingStarted = value; } }
+    public bool RotateTorwardsCamera { get { return rotateTowardsCameraForward; } set { rotateTowardsCameraForward = value; } }
     public int IsJumpingHash { get { return isJumpingHash; } }
     public int JumpCountHash { get { return jumpCountHash; } }
     public int IsSprintingHash { get { return isSprintingHash; } }
+    public int IsLedgeGrabbingHash { get { return isLedgeGrabbingHash; } }
     public int IsWallSlidingHash { get { return isWallSlidingHash; } }
     public int IsWalkingHash { get { return isWalkingHash; } }
     public int IsFallingHash { get { return isFallingHash; } }
@@ -94,7 +104,9 @@ public class PlayerStateMachine : MonoBehaviour
     public float AppliedMovementZ { get { return appliedMovement.z; } set { appliedMovement.z = value; } }
     public float FallingSpeed { get { return fallingSpeed; } set { fallingSpeed = value; } }
     public Vector3 CurrentMovement { get { return currentMovement; } set { currentMovement = value; } }
+    public Vector3 LedgeGrabPoint { get { return ledgeGrabPoint; } set { ledgeGrabPoint = value; } }
     public Vector3 CheckForSlopeDirection { get { return checkForSlopeDirection; } set { checkForSlopeDirection = value; } }
+    public Vector3 LedgeGrabDirection { get { return ledgeGrabDirection; } set { ledgeGrabDirection = value; } }
     public Vector3 AppliedMovement { get { return appliedMovement; } set { appliedMovement = value; } }
     public Vector3 FinalMovement { get { return finalMovement; } set { finalMovement = value; } }
     public Vector3 SlopeSlideVelocity { get { return slopeSlideVelocity; } set { slopeSlideVelocity = value; } }
@@ -104,7 +116,9 @@ public class PlayerStateMachine : MonoBehaviour
     public CharacterController CharacterController { get { return characterController; } }
     public bool IsMovementPressed { get { return isMovementPressed; } set { isMovementPressed = value; } }
     public bool ShouldSlide { get { return shouldSlide; } }
+    public bool ShouldLedgeGrab { get { return shouldLedgeGrab; } }
     public bool IsSprintPressed { get { return isSprintPressed; } set { isSprintPressed = value; } }
+    public bool BlockMovement { get { return blockMovement; } set { blockMovement = value; } }
     public float RunSpeedMultiplier { get { return runSpeedMultiplyer; } }
     public float BaseSpeedMultiplier { get { return baseSpeedMultiplyer; } }
     public float Gravity { get { return gravity; } }
@@ -113,8 +127,6 @@ public class PlayerStateMachine : MonoBehaviour
     public GameObject DustParticlesSpawnLocation { get { return _dustParticlesSpawnLocation; } set { _dustParticlesSpawnLocation = value; } }
 
     public bool isMovementRelativeToCamera { get; set; } = true;
-
-    // Nuova proprietà per controllare se il player può ruotare
     public bool canRotate { get; set; } = true;
 
     public string CurrentMovementState
@@ -197,11 +209,13 @@ public class PlayerStateMachine : MonoBehaviour
 
         playerInput = new PlayerInput();
         characterController = GetComponent<CharacterController>();
+        playerActionStateMachine = GetComponent<PlayerActionStateMachine>();
         animator = GetComponentInChildren<Animator>();
 
         isSprintingHash = Animator.StringToHash("isSprinting");
         isWalkingHash = Animator.StringToHash("isWalking");
         isJumpingHash = Animator.StringToHash("isJumping");
+        isLedgeGrabbingHash = Animator.StringToHash("isLedgeGrabbing");
         isFallingHash = Animator.StringToHash("isFalling");
         jumpCountHash = Animator.StringToHash("jumpCount");
         isWallSlidingHash = Animator.StringToHash("isWallSliding");
@@ -227,23 +241,39 @@ public class PlayerStateMachine : MonoBehaviour
         SetupJumpVariables();
     }
 
+    
+
     void HandleRotation()
     {
-        var actionStateMachine = GetComponent<PlayerActionStateMachine>();
-
-        if (!isMovementPressed || !canRotate || isGrabbingStarted)
+        if (!canRotate || isGrabbingStarted || blockMovement)
         {
             return;
         }
 
-        Vector3 positionToLookAt = new Vector3(finalMovement.x, 0, finalMovement.z);
+        Vector3 directionToLookAt;
 
-        if (positionToLookAt.sqrMagnitude < 0.01f) return;
+        if (rotateTowardsCameraForward)
+        {
+            // Ruota il player verso la direzione della camera, solo sul piano XZ (Y fisso)
+            Vector3 camForward = Camera.main.transform.forward;
+            camForward.y = 0;
+            directionToLookAt = camForward.normalized;
+        }
+        else if (!isMovementPressed) return;
+        else
+        {
+            // Ruota il player verso la direzione del movimento finale (di default)
+            directionToLookAt = new Vector3(finalMovement.x, 0, finalMovement.z);
+
+            if (directionToLookAt.sqrMagnitude < 0.01f) return;
+        }
 
         Quaternion currentRotation = transform.rotation;
-        Quaternion nextRotation = Quaternion.LookRotation(positionToLookAt);
-        transform.rotation = Quaternion.Slerp(currentRotation, nextRotation, rotationSpeed * Time.deltaTime);
+        Quaternion targetRotation = Quaternion.LookRotation(directionToLookAt);
+
+        transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
+
 
     void Start()
     {
@@ -255,8 +285,11 @@ public class PlayerStateMachine : MonoBehaviour
         UpdateJumpTimers();
         HandleRotation();
         checkForSlope();
+        CheckForLedgeGrab();
 
         _currentState.UpdateStates();
+
+        if (blockMovement) return;
 
         finalMovement = isMovementRelativeToCamera
         ? ConvertFromWorldToCameraSpace(appliedMovement)
@@ -339,6 +372,39 @@ public class PlayerStateMachine : MonoBehaviour
                 return;
             }
 
+        }
+    }
+
+    void CheckForLedgeGrab()
+    {
+        shouldLedgeGrab = false;
+
+        if(!characterController.isGrounded && AppliedMovement.y < 0f){
+            RaycastHit downHit;
+            Vector3 lineDownStart = (transform.position + Vector3.up * 1.5f) + (transform.forward * 0.8f);
+            Vector3 lineDownEnd = (transform.position + Vector3.up * 0.7f) + (transform.forward * 0.8f);
+            Physics.Linecast(lineDownStart, lineDownEnd, out downHit, ~0);
+            Debug.DrawLine(lineDownStart, lineDownEnd, Color.red);
+            if(downHit.collider != null)
+            {
+                RaycastHit fwdHit;
+                Vector3 lineFwdStart = new Vector3(transform.position.x, downHit.point.y - 0.1f,  transform.position.z);
+                Vector3 lineFwdEnd = new Vector3(transform.position.x, downHit.point.y - 0.1f, transform.position.z) + transform.forward;
+                Physics.Linecast(lineFwdStart, lineFwdEnd, out fwdHit, ~0);
+                Debug.DrawLine(lineFwdStart, lineFwdEnd, Color.blue);
+                if(fwdHit.collider != null)
+                {
+                    Vector3 rawPoint = new Vector3(fwdHit.point.x, downHit.point.y, fwdHit.point.z);
+                    Vector3 offset = transform.forward * -0.3f + transform.up * -1.2f;
+                    ledgeGrabPoint = rawPoint + offset;
+                    ledgeGrabDirection = -fwdHit.normal;
+
+                    Debug.DrawRay(ledgeGrabPoint, Vector3.up * 0.5f, Color.yellow, 2f);
+
+                    shouldLedgeGrab = true;
+
+                }
+            }
         }
     }
 

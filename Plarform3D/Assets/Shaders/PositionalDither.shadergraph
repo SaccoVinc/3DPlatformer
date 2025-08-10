@@ -750,6 +750,7 @@
     "m_OutputNode": {
         "m_Id": ""
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": [
         {
             "m_Id": "788c7c1eb1de401492b590c60a996d79"
@@ -778,7 +779,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -1107,8 +1108,8 @@
     "m_ObjectId": "18332207fd284cd0baee60ba6a2d78b0",
     "m_Title": "Roughness",
     "m_Position": {
-        "x": -650.0,
-        "y": 900.0001220703125
+        "x": -650.39990234375,
+        "y": 899.1998901367188
     }
 }
 
@@ -1376,8 +1377,8 @@
     "m_ObjectId": "217fc681084f4a44a1849900448b462b",
     "m_Title": "Base Color & Alpha",
     "m_Position": {
-        "x": -779.9999389648438,
-        "y": -384.0000305175781
+        "x": -779.9998779296875,
+        "y": -384.79998779296877
     }
 }
 
@@ -1393,7 +1394,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -1655,8 +1656,8 @@
     "m_ObjectId": "2ceae514423b43fb86e497081149f69b",
     "m_Title": "Positional Dithering (along the x-axis with tiling/offset)",
     "m_Position": {
-        "x": 10.0,
-        "y": 10.0
+        "x": -1179.9998779296875,
+        "y": -976.0
     }
 }
 
@@ -1746,7 +1747,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -1773,7 +1774,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -1983,8 +1984,8 @@
     "m_ObjectId": "3f0e0c5eee2e4537918f4fd2ec845be1",
     "m_Title": "Heightmap",
     "m_Position": {
-        "x": -1549.9998779296875,
-        "y": 187.99996948242188
+        "x": -1489.5999755859375,
+        "y": 187.199951171875
     }
 }
 
@@ -2009,8 +2010,8 @@
     "m_ObjectId": "43148b2716b84276b92b91ff02c7faca",
     "m_Title": "Normals",
     "m_Position": {
-        "x": -484.0000305175781,
-        "y": 176.99993896484376
+        "x": -484.0001220703125,
+        "y": 176.0
     }
 }
 
@@ -2296,7 +2297,7 @@
     "m_StageCapability": 2,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 1
@@ -2323,7 +2324,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -2695,6 +2696,9 @@
     "m_AlphaClip": true,
     "m_CastShadows": true,
     "m_ReceiveShadows": true,
+    "m_DisableTint": false,
+    "m_AdditionalMotionVectorMode": 0,
+    "m_AlembicMotionVectors": false,
     "m_SupportsLODCrossFade": false,
     "m_CustomEditorGUI": "",
     "m_SupportVFX": false
@@ -2935,7 +2939,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -3813,7 +3817,7 @@
     "m_Title": "Ambient Occlusion",
     "m_Position": {
         "x": -524.0,
-        "y": 1268.0001220703125
+        "y": 1267.199951171875
     }
 }
 
@@ -4063,7 +4067,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -4176,8 +4180,8 @@
     "m_ObjectId": "c108e3cd32624325a363ed4684b03d2b",
     "m_Title": "Metallic",
     "m_Position": {
-        "x": -484.0000915527344,
-        "y": 525.0000610351563
+        "x": -484.0001220703125,
+        "y": 523.9999389648438
     }
 }
 
@@ -4202,7 +4206,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": true,
@@ -4223,7 +4227,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -4241,7 +4245,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 3
@@ -4334,7 +4338,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -4443,8 +4447,8 @@
     "m_ObjectId": "d139dfe6ef864bc8aa750771038d8bdb",
     "m_Title": "Alpha Clip",
     "m_Position": {
-        "x": -604.9998168945313,
-        "y": 1660.9998779296875
+        "x": -605.5999755859375,
+        "y": 1660.0
     }
 }
 

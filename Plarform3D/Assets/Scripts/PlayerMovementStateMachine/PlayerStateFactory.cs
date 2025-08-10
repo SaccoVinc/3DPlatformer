@@ -9,7 +9,8 @@ public enum PlayerStateType
     Walk,
     Jump,
     Fall,
-    WallSliding
+    WallSliding,
+    LedgeGrabbing
 }
 
 public class PlayerStateFactory
@@ -33,7 +34,8 @@ public class PlayerStateFactory
             { PlayerStateType.Walk, new PlayerWalkState(_context, this) },
             { PlayerStateType.Jump, new PlayerJumpState(_context, this) },
             { PlayerStateType.Fall, new PlayerFallState(_context, this) },
-            { PlayerStateType.WallSliding, new PlayerWallSlidingState(_context, this) }
+            { PlayerStateType.WallSliding, new PlayerWallSlidingState(_context, this) },
+            { PlayerStateType.LedgeGrabbing, new PlayerLedgeGrabState(_context, this) }
         };
     }
 
@@ -54,4 +56,5 @@ public class PlayerStateFactory
     public PlayerBaseState Jump() => GetState(PlayerStateType.Jump);
     public PlayerBaseState Fall() => GetState(PlayerStateType.Fall);
     public PlayerBaseState WallSliding() => GetState(PlayerStateType.WallSliding);
+    public PlayerBaseState LedgeGrabbing() => GetState(PlayerStateType.LedgeGrabbing);
 }

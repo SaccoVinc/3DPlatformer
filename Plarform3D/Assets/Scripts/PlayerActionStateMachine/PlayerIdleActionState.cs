@@ -10,6 +10,8 @@ public class PlayerIdleActionState : PlayerActionBaseState
 
     public override void CheckSwitchStates()
     {
+        if (!_ctx.CanPerformActions) return;
+
         if (_ctx.IsGrabPressed)
         {
             SwitchState(_factory.Grab());

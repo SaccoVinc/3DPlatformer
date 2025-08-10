@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.Animations.Rigging;
+using Unity.Cinemachine;
 
 public class PlayerActionStateMachine : MonoBehaviour
 {
@@ -23,6 +25,7 @@ public class PlayerActionStateMachine : MonoBehaviour
     bool _isInGrabState = false;
     bool _requireNewAttackPress = false;
     bool _hasBufferedInput = false;
+    bool _canPerformActions = true;
 
     [Header("Attack Settings")]
     [SerializeField] float AttackDamage = 3f;
@@ -39,7 +42,11 @@ public class PlayerActionStateMachine : MonoBehaviour
     [SerializeField] bool _showDebugGUI = true;
 
     [Header("Shooting Settings")]
-    [SerializeField] int _shootingLayerId = 4;
+    [SerializeField] Rig _shootingRig;
+    [SerializeField] ParticleSystem _paintParticles;
+    [SerializeField] Transform _paintParticleParent;
+    [SerializeField] CinemachineCamera _camera;
+ 
  
     private Coroutine _layerWeightCoroutine;
     private Coroutine _dashCoroutine;
@@ -51,17 +58,20 @@ public class PlayerActionStateMachine : MonoBehaviour
         set { _currentState = value; }
     }
     public PlayerStateMachine PlayerStateMachine { get => _playerStateMachine; set => _playerStateMachine = value; }
+    public CinemachineCamera Camera => _camera;
     public bool IsAttackPressed => _isAttackPressed;
     public bool IsGrabPressed => _isGrabPressed;
-    public bool IsInGrabState => _isInGrabState; // Nuova property
+    public bool IsInGrabState => _isInGrabState;
+    public Rig ShootingRig => _shootingRig;
     public bool RequireNewAttackPress { get => _requireNewAttackPress; set => _requireNewAttackPress = value; }
     public bool HasBufferedInput { get => _hasBufferedInput; set => _hasBufferedInput = value; }
+    public bool CanPerformActions { get => _canPerformActions; set => _canPerformActions = value; }
     public int RightPunchHash => _rightPunchHash;
     public int LeftPunchHash => _leftPunchHash;
-    public int ShootingLayerId => _shootingLayerId;
     public int GrabHash => _grabHash;
     public Animator Animator => animator;
-    
+    public ParticleSystem PaintParticles { get => _paintParticles; set => _paintParticles = value; }
+    public Transform PaintParticlesParent { get => _paintParticleParent; set => _paintParticleParent = value; }
     public PlayerActionStateFactory States => _states;
     public CharacterController CharacterController => characterController;
     public float AttacksDuration { get => _attacksDuration; set => _attacksDuration = value; }
@@ -97,6 +107,18 @@ public class PlayerActionStateMachine : MonoBehaviour
         _currentState.UpdateStates();
 
         _isInGrabState = _currentState is PlayerGrabActionState;
+
+        if (!CanPerformActions)
+        {
+            if(CurrentState != States.Idle())
+            {
+                CurrentState = States.Idle();
+                Animator.SetLayerWeight(1, 0f);
+                Animator.SetLayerWeight(2, 0f);
+                Animator.SetLayerWeight(3, 0f);
+
+            }
+        }
 
         if (!_isAttackPressed && _requireNewAttackPress)
         {
@@ -180,6 +202,7 @@ public class PlayerActionStateMachine : MonoBehaviour
             elapsedTime += Time.deltaTime;
 
             Vector3 dashMovement = dashDirection * _dashForce * Time.deltaTime;
+            dashMovement += Vector3.down * 1f * Time.deltaTime;
 
             characterController.Move(dashMovement);
 
@@ -240,4 +263,5 @@ public class PlayerActionStateMachine : MonoBehaviour
             StopCoroutine(_dashCoroutine);
         }
     }
+
 }

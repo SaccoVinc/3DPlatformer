@@ -13,16 +13,19 @@ public class PlayerAttackActionState : PlayerActionBaseState
     public override void EnterState()
     {
         _currentAttackLayer = DetermineAttackLayer();
-
-        int otherLayer = _currentAttackLayer == 1 ? 2 : 1;
-        _ctx.Animator.SetLayerWeight(otherLayer, 0f);
-        _ctx.Animator.SetLayerWeight(_currentAttackLayer, 1f);
-
+        SetAnimationLayers();
         InitializeSubState();
     }
 
     public override void UpdateState()
     {
+        int newAttackLayer = DetermineAttackLayer();
+        if (newAttackLayer != _currentAttackLayer)
+        {
+            _currentAttackLayer = newAttackLayer;
+            SetAnimationLayers();
+        }
+
         CheckSwitchStates();
     }
 
@@ -30,7 +33,8 @@ public class PlayerAttackActionState : PlayerActionBaseState
     {
         _ctx.Animator.SetBool(_ctx.LeftPunchHash, false);
         _ctx.Animator.SetBool(_ctx.RightPunchHash, false);
-        _ctx.Animator.SetLayerWeight(_currentAttackLayer, 0f);
+        _ctx.Animator.SetLayerWeight(1, 0f);
+        _ctx.Animator.SetLayerWeight(2, 0f);
     }
 
     public override void InitializeSubState()
@@ -54,5 +58,12 @@ public class PlayerAttackActionState : PlayerActionBaseState
             return isMoving ? 2 : 1;
         }
         return 1;
+    }
+
+    private void SetAnimationLayers()
+    {
+        _ctx.Animator.SetLayerWeight(1, 0f);
+        _ctx.Animator.SetLayerWeight(2, 0f);
+        _ctx.Animator.SetLayerWeight(_currentAttackLayer, 1f);
     }
 }

@@ -16,6 +16,10 @@ public class PlayerJumpState : PlayerBaseState, IRootState
         {
             SwitchState(_factory.Grounded());
         }
+        else if (_ctx.ShouldLedgeGrab && !_ctx.ShouldSlide)
+        {
+            SwitchState(_factory.LedgeGrabbing());
+        }
     }
 
     public override void EnterState()

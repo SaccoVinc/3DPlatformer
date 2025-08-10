@@ -24,6 +24,10 @@ public class PlayerFallState : PlayerBaseState, IRootState
         {
             SwitchState(_factory.WallSliding());
         }
+        else if (_ctx.ShouldLedgeGrab)
+        {
+            SwitchState(_factory.LedgeGrabbing());
+        }
     }
 
     public override void EnterState()
