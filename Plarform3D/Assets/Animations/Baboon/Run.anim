@@ -24718,9 +24718,9 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.083333336
-    functionName: OnDustParticle
+    functionName: FootstepStart
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 11400000, guid: 28ea5f2ec962bde4598d3e9b22df1045, type: 2}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
@@ -24731,10 +24731,24 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.125
+    functionName: OnDustParticle
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.33333334
     functionName: OnDustParticle
     data: 
     objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.375
+    functionName: FootstepStart
+    data: 
+    objectReferenceParameter: {fileID: 11400000, guid: 352ea1863ceb1814da0eefd63dfc79bc, type: 2}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

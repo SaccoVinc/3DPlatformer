@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: e5d59a8ebc18a5d448caad53095dc2e3, type: 2}
     - target: {fileID: 919132149155446097, guid: 21457df72192b5c48add472164fe00c5, type: 3}
       propertyPath: m_Name
-      value: PaintGun 1
+      value: PaintGun
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 21457df72192b5c48add472164fe00c5, type: 3}
       propertyPath: m_Layer

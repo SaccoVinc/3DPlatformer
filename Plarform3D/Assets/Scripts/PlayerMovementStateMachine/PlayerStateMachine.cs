@@ -61,6 +61,10 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] float runSpeedMultiplyer = 10f;
     [SerializeField] float fallingSpeed = -9.81f;
 
+    [Header("Layer Masks")]
+    [SerializeField] LayerMask slideableLayerMask;
+    [SerializeField] LayerMask grabbableLayerMask;
+
     [Header("Jump")]
     [SerializeField] float maxJumpHeight = 1f;
     [SerializeField] float maxJumpTime = 0.5f;
@@ -284,7 +288,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         UpdateJumpTimers();
         HandleRotation();
-        checkForSlope();
+        CheckForSlope();
         CheckForLedgeGrab();
 
         _currentState.UpdateStates();
@@ -355,13 +359,13 @@ public class PlayerStateMachine : MonoBehaviour
         return rotatedVector;
     }
 
-    void checkForSlope()
+    void CheckForSlope()
     {
         Debug.DrawLine(transform.position + Vector3.up, transform.position + Vector3.up + checkForSlopeDirection, Color.red);
 
         shouldSlide = false;
 
-        if (Physics.Raycast(transform.position + Vector3.up, checkForSlopeDirection, out RaycastHit hitInfo, 5, ~0))
+        if (Physics.Raycast(transform.position + Vector3.up, checkForSlopeDirection, out RaycastHit hitInfo, 5, slideableLayerMask))
         {
             float angle = Vector3.Angle(hitInfo.normal, Vector3.up);
 
@@ -383,7 +387,7 @@ public class PlayerStateMachine : MonoBehaviour
             RaycastHit downHit;
             Vector3 lineDownStart = (transform.position + Vector3.up * 1.5f) + (transform.forward * 0.8f);
             Vector3 lineDownEnd = (transform.position + Vector3.up * 0.7f) + (transform.forward * 0.8f);
-            Physics.Linecast(lineDownStart, lineDownEnd, out downHit, ~0);
+            Physics.Linecast(lineDownStart, lineDownEnd, out downHit, grabbableLayerMask);
             Debug.DrawLine(lineDownStart, lineDownEnd, Color.red);
             if(downHit.collider != null)
             {

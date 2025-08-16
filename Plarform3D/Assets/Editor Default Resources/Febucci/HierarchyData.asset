@@ -16,7 +16,7 @@ MonoBehaviour:
   updateInPlayMode: 1
   drawActivationToggle: 1
   icons:
-    enabled: 1
+    enabled: 0
     aligned: 0
     pairs: []
   prefabsData:
@@ -27,7 +27,7 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 0.08}
   separator:
     enabled: 1
-    startString: '-'
+    startString: ---
     color: {r: 0, g: 1, b: 1, a: 0.15}
   tree:
     enabled: 0

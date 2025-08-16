@@ -46072,10 +46072,24 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.4
+    functionName: FootstepStart
+    data: 
+    objectReferenceParameter: {fileID: 11400000, guid: 28ea5f2ec962bde4598d3e9b22df1045, type: 2}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.0333333
     functionName: PlayStep
     data: 
     objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.0333333
+    functionName: FootstepStart
+    data: 
+    objectReferenceParameter: {fileID: 11400000, guid: 352ea1863ceb1814da0eefd63dfc79bc, type: 2}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
