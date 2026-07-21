@@ -51,7 +51,3 @@ This distinction is what enables **combo chains**: `PunchLeft` → `PunchRight` 
 - Unity Input System (new)
 - Animator Controller (layered)
 - Character Controller
-
----
-
-## Project Structure
